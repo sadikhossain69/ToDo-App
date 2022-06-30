@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import Register from './components/Register';
 import Home from './components/Home';
 import Calendar from './components/Calendar';
+import CompletedTask from './components/CompletedTask';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<Home/>} />
         <Route path='/todo' element={<ToDo />} />
         <Route path='/calendar' element={<Calendar/>} />
+        <Route path='/completedTasks' element={<CompletedTask/>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
