@@ -5,13 +5,15 @@ import Login from './components/Login';
 import ToDo from './components/ToDo';
 import Footer from './components/Footer';
 import Register from './components/Register';
+import Home from './components/Home';
 
 function App() {
   return (
     <section>
       <Navbar />
       <Routes>
-        <Route path='/' element={<ToDo />} />
+        <Route path='/' element={<Home/>} />
+        <Route path='/todo' element={<ToDo />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
