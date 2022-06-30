@@ -12,14 +12,20 @@ const Calendar = () => {
         footer = <p>You picked {format(selected, 'PP')}.</p>;
     }
 
+    console.log(footer)
+
     return (
-        <section className='flex justify-center items-center'>
+        <section className='flex justify-center items-center flex-col md:flex-row'>
             <DayPicker
                 mode="single"
                 selected={selected}
                 onSelect={setSelected}
                 footer={footer}
             />
+            <div className='space-y-2'>
+                <input className='input input-bordered' type="text" placeholder='Add Your Task' /> <br />
+                <button className='bg-green-600 text-white px-5 py-1 rounded hover:scale-125 duration-300 ease-in-out'>Add</button>
+            </div>
         </section>
     );
 };
