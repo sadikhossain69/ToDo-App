@@ -12,7 +12,7 @@ const ToDo = () => {
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Finish Btn</th>
+                            <th>Complete Btn</th>
                             <th>Date</th>
                             <th>Task</th>
                             <th>Actions</th>
