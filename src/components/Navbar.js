@@ -7,7 +7,6 @@ import auth from '../firebase.init';
 const Navbar = () => {
 
     const [user] = useAuthState(auth)
-    console.log(user);
     return (
         <section>
             <div className="navbar bg-base-200">
