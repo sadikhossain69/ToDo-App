@@ -14,10 +14,9 @@ const Navbar = () => {
                             <Link to='/completedTasks' className='font-semibold hover:border p-3 hover:bg-blue-600 hover:text-white duration-300 ease-in-out' ><button>Completed Tasks</button></Link>
                             <Link to='/todo' className='font-semibold hover:border p-3 hover:bg-blue-600 hover:text-white duration-300 ease-in-out' ><button>To-Do</button></Link>
                             <Link to='/calendar' className='font-semibold hover:border p-3 hover:bg-blue-600 hover:text-white duration-300 ease-in-out' ><button>Calendar</button></Link>
-                            <Link to='/login'><button className="btn">Login</button></Link>
                         </ul>
                     </div>
-                    <button className="btn btn-ghost normal-case text-xl">ToDo App</button>
+                    <Link to='/'><button className="btn btn-ghost normal-case text-xl hidden md:block">ToDo App</button></Link>
                 </div>
                 <div className="navbar-end space-x-5">
                     <Link to='/completedTasks' className='font-semibold hover:border p-3 hover:bg-blue-600 hover:text-white duration-300 ease-in-out hidden md:block' ><button>Completed Tasks</button></Link>
