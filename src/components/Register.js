@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 const Register = () => {
     return (
-        <section className='min-h-screen flex justify-center items-center'>
+        <section className='my-10 flex justify-center items-center'>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                 <h2 className="text-3xl font-bold text-center mt-5 text-green-600">Register</h2>
                 <div className="card-body">
