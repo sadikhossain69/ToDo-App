@@ -1,13 +1,17 @@
 import './App.css';
 import Navbar from './components/Navbar';
+import { Routes, Route } from 'react-router-dom'
+import Login from './components/Login';
+import ToDo from './components/ToDo';
 
 function App() {
   return (
     <section>
-      <Navbar/>
-      <h1 className="text-3xl font-bold underline">
-        Hello world!
-      </h1>
+      <Navbar />
+      <Routes>
+        <Route path='/' element={<ToDo/>} />
+        <Route path='/login' element={<Login/>} />
+      </Routes>
     </section>
   );
 }
