@@ -1,8 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useQuery } from 'react-query';
+import auth from '../firebase.init';
+import Loading from './Loading';
+import SingleToDo from './SingleToDo';
 
 const ToDo = () => {
 
-    const [editTask, setEditTask] = useState(false)
+    const [user] = useAuthState(auth)
+    const url = `http://localhost:5000/api/gettingTodo?email=${user?.email}`
+
+    const { isLoading, error, data:tasks, refetch } = useQuery('tasks', () => fetch(url).then(res => res.json()))
+
+    if(isLoading) {
+        return <Loading/>
+    }
+
+    if(error) {
+        console.log(error.message);
+    }
+
+    if(tasks === []) {
+        return refetch()
+    }
+
+    
+
+    console.log(tasks);
 
     return (
         <section className='min-h-screen flex justify-center '>
@@ -19,42 +43,13 @@ const ToDo = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="hover">
-                            <th>2</th>
-                            <td> <input type="radio" name="" id="" /> </td>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            {
-                                editTask
-                                    ?
-                                    <>
-                                        <td><button onClick={() => setEditTask(!editTask)} className='bg-green-600 text-white px-3 py-1 font-semibold'>Cancel</button></td>
-                                    </>
-                                    :
-                                    <>
-                                        <td><button onClick={() => setEditTask(!editTask)} className='bg-green-600 text-white px-3 py-1 font-semibold'>Edit</button></td>
-                                    </>
-                            }
-                            
-                        </tr>
-                        <tr className="hover">
-                            <th>2</th>
-                            <td> <input type="radio" name="" id="" /> </td>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            {
-                                editTask
-                                    ?
-                                    <>
-                                        <td><button onClick={() => setEditTask(!editTask)} className='bg-green-600 text-white px-3 py-1 font-semibold'>Cancel</button></td>
-                                    </>
-                                    :
-                                    <>
-                                        <td><button onClick={() => setEditTask(!editTask)} className='bg-green-600 text-white px-3 py-1 font-semibold'>Edit</button></td>
-                                    </>
-                            }
-                            
-                        </tr>
+                        {
+                            tasks.map((task, index) => <SingleToDo
+                                key={task._id}
+                                task={task}
+                                index={index}
+                            />)
+                        }
                     </tbody>
                 </table>
             </div>

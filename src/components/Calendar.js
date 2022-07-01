@@ -19,7 +19,7 @@ const Calendar = () => {
 
     const handleAddTask = () => {
         const date = footer.props.children[1]
-        if(footer.props.children === 'Please pick a day.') {
+        if (footer.props.children === 'Please pick a day.') {
             console.log("You hanvn't select any date");
             return toast.error("You hanvn't select any date")
         }
@@ -27,7 +27,7 @@ const Calendar = () => {
 
         const url = `http://localhost:5000/api/addingTodo`
 
-        const allData = {date, email, taskInput}
+        const allData = { date, email, taskInput }
 
         fetch(url, {
             method: "POST",
@@ -36,17 +36,17 @@ const Calendar = () => {
             },
             body: JSON.stringify(allData)
         })
-        .then(res => res.json())
-        .then(data => {
-            if(data.insertedId) {
-                toast.success("Successfully Added Task")
-            }
-        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.insertedId) {
+                    toast.success("Successfully Added Task")
+                }
+            })
 
     }
 
-    console.log(footer)
-    console.log(taskInput);
+    // console.log(footer)
+    // console.log(taskInput);
 
     return (
         <section className='flex justify-center items-center flex-col md:flex-row'>
@@ -57,8 +57,10 @@ const Calendar = () => {
                 footer={footer}
             />
             <div className='space-y-2'>
-                <input onChange={(e) => setTaskInput(e.target.value)} className='input input-bordered' type="text" placeholder='Add Your Task' required /> <br />
-                <button onClick={handleAddTask} className='bg-green-600 text-white px-5 py-1 rounded hover:scale-125 duration-300 ease-in-out'>Add</button>
+                <form onClick={ (e) => {e.preventDefault()}} action="">
+                    <input onChange={(e) => setTaskInput(e.target.value)} className='input input-bordered' type="text" placeholder='Add Your Task' required /> <br />
+                    <button onClick={handleAddTask} className='bg-green-600 text-white px-5 py-1 rounded hover:scale-125 duration-300 ease-in-out'>Add</button>
+                </form>
             </div>
         </section>
     );
