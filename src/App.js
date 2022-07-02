@@ -10,22 +10,23 @@ import Calendar from './components/Calendar';
 import CompletedTask from './components/CompletedTask';
 import { Toaster } from 'react-hot-toast';
 import EditSingleToDo from './components/EditSingleToDo';
+import RequireAuth from './components/RequireAuth';
 
 function App() {
   return (
     <section>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home/>} />
-        <Route path='/todo' element={<ToDo />} />
-        <Route path='/calendar' element={<Calendar/>} />
-        <Route path='/completedTasks' element={<CompletedTask/>} />
-        <Route path='/singleToDo/:id' element={<EditSingleToDo/>} />
+        <Route path='/' element={<RequireAuth><Home /></RequireAuth>} />
+        <Route path='/todo' element={<RequireAuth><ToDo /></RequireAuth>} />
+        <Route path='/calendar' element={<RequireAuth><Calendar /></RequireAuth>} />
+        <Route path='/completedTasks' element={<RequireAuth><CompletedTask /></RequireAuth>} />
+        <Route path='/singleToDo/:id' element={<RequireAuth><EditSingleToDo /></RequireAuth>} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
       </Routes>
       <Footer />
-      <Toaster/>
+      <Toaster />
     </section>
   );
 }
