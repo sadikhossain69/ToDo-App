@@ -1,6 +1,23 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../firebase.init';
+import SingleCompletedTask from './SingleCompletedTask';
 
 const CompletedTask = () => {
+
+    const [completedTasks, setCompletedTasks] = useState([])
+    const [user] = useAuthState(auth)
+
+    useEffect( () => {
+        fetch(`http://localhost:5000/api/completedTask?email=${user.email}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            setCompletedTasks(data)
+        })
+    }, [user.email] )
+
+
     return (
         <section className='min-h-screen flex justify-center items-center'>
             <div className="overflow-x-auto">
@@ -15,24 +32,13 @@ const CompletedTask = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th>1</th>
-                            <td>Cy Ganderton</td>
-                            <td>Quality Control Specialist</td>
-                            <td>Blue</td>
-                        </tr>
-                        <tr className="hover">
-                            <th>2</th>
-                            <td>Hart Hagerty</td>
-                            <td>Desktop Support Technician</td>
-                            <td>Purple</td>
-                        </tr>
-                        <tr>
-                            <th>3</th>
-                            <td>Brice Swyre</td>
-                            <td>Tax Accountant</td>
-                            <td>Red</td>
-                        </tr>
+                        {
+                            completedTasks.map((completedTask, index) => <SingleCompletedTask
+                                key={index}
+                                completedTask={completedTask}
+                                index={index}
+                            />)
+                        }
                     </tbody>
                 </table>
             </div>

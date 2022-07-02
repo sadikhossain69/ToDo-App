@@ -26,12 +26,12 @@ const ToDo = () => {
 
     
 
-    console.log(tasks);
+    // console.log(tasks);
 
     return (
-        <section className='min-h-screen flex justify-center '>
+        <section className=''>
             <div className="overflow-x-auto">
-                <h2 className='text-center text-3xl font-semibold my-3 text-blue-600'>To-Do List</h2>
+                {/* <h2 className='text-center text-3xl font-semibold my-3 text-blue-600'>To-Do List</h2> */}
                 <table className="table w-full">
                     <thead>
                         <tr>
