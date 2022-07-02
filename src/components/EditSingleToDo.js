@@ -12,7 +12,7 @@ const EditSingleToDo = () => {
         const taskInput = e.target.editedText.value;
         console.log(taskInput);
 
-        fetch(`http://localhost:5000/api/editTask/${id}`, {
+        fetch(`https://arctic-drake-50926.herokuapp.com/api/editTask/${id}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json'

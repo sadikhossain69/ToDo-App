@@ -9,7 +9,7 @@ const CompletedTask = () => {
     const [user] = useAuthState(auth)
 
     useEffect( () => {
-        fetch(`http://localhost:5000/api/completedTask?email=${user.email}`)
+        fetch(`https://arctic-drake-50926.herokuapp.com/api/completedTask?email=${user.email}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);

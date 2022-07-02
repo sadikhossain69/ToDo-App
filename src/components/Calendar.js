@@ -25,7 +25,7 @@ const Calendar = () => {
         }
         const email = user.email
 
-        const url = `http://localhost:5000/api/addingTodo`
+        const url = `https://arctic-drake-50926.herokuapp.com/api/addingTodo`
 
         const allData = { date, email, taskInput }
 

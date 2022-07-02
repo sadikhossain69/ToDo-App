@@ -8,7 +8,7 @@ const SingleToDo = ({ task, refetch, index }) => {
 
     const handleComplete = (e, id) => {
 
-        fetch(`http://localhost:5000/api/completeTask/${id}`, {
+        fetch(`https://arctic-drake-50926.herokuapp.com/api/completeTask/${id}`, {
             method: "PUT",
             headers: {
                 'Content-type': 'application/json'

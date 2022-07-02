@@ -8,7 +8,7 @@ import SingleToDo from './SingleToDo';
 const ToDo = () => {
 
     const [user] = useAuthState(auth)
-    const url = `http://localhost:5000/api/gettingTodo?email=${user?.email}`
+    const url = `https://arctic-drake-50926.herokuapp.com/api/gettingTodo?email=${user?.email}`
 
     const { isLoading, error, data:tasks, refetch } = useQuery('tasks', () => fetch(url).then(res => res.json()))
 
