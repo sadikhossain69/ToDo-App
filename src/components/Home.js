@@ -4,7 +4,7 @@ import ToDo from './ToDo';
 
 const Home = () => {
     return (
-        <section className=''>
+        <section className=''> 
             <Calendar/>
             <ToDo/>
         </section>
