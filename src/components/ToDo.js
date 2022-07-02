@@ -48,6 +48,7 @@ const ToDo = () => {
                                 key={task._id}
                                 task={task}
                                 index={index}
+                                refetch={refetch}
                             />)
                         }
                     </tbody>
